@@ -29,7 +29,7 @@ export default function DetailRoute({
   const isOwner = list.ownerId === currentUserId;
 
   const handleLeave = () => {
-    if (confirm(`Are you sure you want to leave "${list.title}"?`)) {
+    if (window.confirm(`Are you sure you want to leave "${list.title}"?`)) {
       onLeave();
     }
   };

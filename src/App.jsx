@@ -33,13 +33,13 @@ export default function App() {
   };
 
   const handleDeleteListFromOverview = (listId) => {
-    if (confirm('Delete this list?')) {
+    if (window.confirm('Delete this list?')) {
       setLists(lists.filter(l => l.id !== listId));
     }
   };
 
   const handleLeaveListFromOverview = (listId) => {
-    if (confirm('Leave this list?')) {
+    if (window.confirm('Leave this list?')) {
       setLists(lists.map(list =>
         list.id === listId
           ? { ...list, members: list.members.filter(m => m !== currentUser.id) }
@@ -66,7 +66,7 @@ export default function App() {
   };
 
   const handleRemoveMember = (userId) => {
-    if (confirm('Remove this member from the list?')) {
+    if (window.confirm('Remove this member from the list?')) {
       setLists(lists.map(list =>
         list.id === selectedListId
           ? { ...list, members: list.members.filter(m => m !== userId) }
@@ -110,7 +110,7 @@ export default function App() {
   };
 
   const handleArchiveList = () => {
-    if (confirm(`Archive "${selectedList.title}"?`)) {
+    if (window.confirm(`Archive "${selectedList.title}"?`)) {
       setLists(lists.map(list =>
         list.id === selectedListId
           ? { ...list, archived: true, archivedAt: new Date().toISOString() }
@@ -136,7 +136,7 @@ export default function App() {
 
   // Archive handlers
   const handleDeleteArchivedList = (listId) => {
-    if (confirm('Permanently delete this archived list?')) {
+    if (window.confirm('Permanently delete this archived list?')) {
       setLists(lists.filter(l => l.id !== listId));
     }
   };
