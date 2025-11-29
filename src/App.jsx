@@ -9,8 +9,9 @@ export default function App() {
   const [selectedListId, setSelectedListId] = useState(null);
   const [lists, setLists] = useState(INITIAL_DATA.lists);
   const [users] = useState(INITIAL_DATA.users);
+  const [currentUserId, setCurrentUserId] = useState(INITIAL_DATA.currentUser.id);
   
-  const currentUser = INITIAL_DATA.currentUser;
+  const currentUser = users.find(u => u.id === currentUserId) || INITIAL_DATA.currentUser;
   const selectedList = lists.find(l => l.id === selectedListId);
 
   // Overview handlers
@@ -151,6 +152,8 @@ export default function App() {
         lists={userLists}
         currentUserId={currentUser.id}
         currentUser={currentUser}
+        allUsers={users}
+        onSwitchUser={setCurrentUserId}
         onOpenList={handleOpenList}
         onDeleteList={handleDeleteListFromOverview}
         onLeaveList={handleLeaveListFromOverview}

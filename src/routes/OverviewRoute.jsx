@@ -7,7 +7,9 @@ import { Archive } from 'lucide-react';
 export default function OverviewRoute({ 
   lists, 
   currentUserId, 
-  currentUser, 
+  currentUser,
+  allUsers,
+  onSwitchUser,
   onOpenList, 
   onDeleteList, 
   onLeaveList, 
@@ -23,7 +25,9 @@ export default function OverviewRoute({
     <div className="min-h-screen bg-gray-100">
       <OverviewHeader
         user={currentUser}
+        allUsers={allUsers}
         onCreateClick={() => setShowCreateModal(true)}
+        onSwitchUser={onSwitchUser}
       />
       
       <div className="max-w-6xl mx-auto p-6">

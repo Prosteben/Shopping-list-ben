@@ -19,7 +19,7 @@ export default function ManageMembersModal({ isOpen, list, users, currentUserId,
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg p-6 max-w-md w-full">
+      <div className="bg-white rounded-lg p-6 max-w-2xl w-full">
         <div className="flex items-center gap-2 mb-4">
           <Users size={24} className="text-blue-500" />
           <h3 className="text-xl font-bold">Manage Members</h3>
@@ -29,21 +29,21 @@ export default function ManageMembersModal({ isOpen, list, users, currentUserId,
           <h4 className="font-semibold mb-2">Current Members ({memberUsers.length})</h4>
           <div className="space-y-2 max-h-60 overflow-y-auto">
             {memberUsers.map(user => (
-              <div key={user.id} className="flex items-center justify-between p-2 bg-gray-50 rounded">
-                <div>
+              <div key={user.id} className="flex items-center justify-between p-3 bg-gray-50 rounded">
+                <div className="flex-1">
                   <p className="font-medium">{user.name}</p>
-                  <p className="text-xs text-gray-500">{user.email}</p>
+                  <p className="text-sm text-gray-500">{user.email}</p>
                   {user.id === list.ownerId && (
-                    <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">Owner</span>
+                    <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded mt-1 inline-block">Owner</span>
                   )}
                 </div>
                 {isOwner && user.id !== list.ownerId && (
                   <button
                     onClick={() => onRemoveMember(user.id)}
-                    className="text-red-500 hover:text-red-700 p-1"
+                    className="text-red-500 hover:text-red-700 p-2 hover:bg-red-50 rounded transition-colors ml-2"
                     title="Remove member"
                   >
-                    <UserMinus size={18} />
+                    <UserMinus size={20} />
                   </button>
                 )}
               </div>
@@ -70,9 +70,9 @@ export default function ManageMembersModal({ isOpen, list, users, currentUserId,
               <button
                 onClick={handleAddMember}
                 disabled={!selectedUserId}
-                className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded disabled:opacity-50 disabled:cursor-not-allowed transition-colors whitespace-nowrap"
               >
-                Add
+                Add Member
               </button>
             </div>
           </div>
